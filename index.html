@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Number One - Retro Neon Arcade</title>
+    <meta name="description" content="Welcome to Test Number One! A glowing, glassmorphic collection of retro-futuristic arcade games with high-score tracking and synthesized audio effects.">
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome or standard icons could be used, but we'll use elegant emoji icons designed beautifully into the neon buttons -->
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon">T1</div>
+            <h1 class="logo-text">TEST NUMBER <span>ONE</span></h1>
+        </div>
+        <div class="header-stats">
+            <div class="stat-badge">
+                <span>🔊 Synth Audio</span>
+                <button id="audio-toggle-btn" class="audio-toggle">⚡ ON</button>
+            </div>
+            <div class="stat-badge">
+                <span>Total XP:</span>
+                <strong id="global-xp">0</strong>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Test Number One</h1>
+        <p>A sleek, premium cyber-playground of interactive mini-games. Compete with yourself, beat your top scores, and feel the neon flow.</p>
+    </section>
+
+    <!-- Main Container -->
+    <main class="container">
+        <div class="grid">
+            <!-- Game 1: Snake -->
+            <div class="card card-snake" onclick="app.openGame('snake')">
+                <div>
+                    <div class="card-icon">🐍</div>
+                    <h2 class="card-title">Neon Snake</h2>
+                    <p class="card-desc">Navigate the neon matrix, collect cyber-pellets, and grow your trail. Fast-paced action with velocity multiplier scaling.</p>
+                </div>
+                <div class="card-stats">
+                    <div class="high-score">High Score: <span id="snake-high">0</span></div>
+                    <button class="play-btn">LAUNCH</button>
+                </div>
+            </div>
+
+            <!-- Game 2: Space Defenders -->
+            <div class="card card-defenders" onclick="app.openGame('defenders')">
+                <div>
+                    <div class="card-icon">🚀</div>
+                    <h2 class="card-title">Space Defenders</h2>
+                    <p class="card-desc">Protect the sector from waves of falling block invaders. Direct ship movement, shoot plasma lasers, and trigger high-particle explosions.</p>
+                </div>
+                <div class="card-stats">
+                    <div class="high-score">High Score: <span id="defenders-high">0</span></div>
+                    <button class="play-btn">LAUNCH</button>
+                </div>
+            </div>
+
+            <!-- Game 3: Memory Match -->
+            <div class="card card-memory" onclick="app.openGame('memory')">
+                <div>
+                    <div class="card-icon">🧠</div>
+                    <h2 class="card-title">Memory Match</h2>
+                    <p class="card-desc">Test your visual cache memory. Flip premium 3D cards, match cyberpunk emoji symbols, and finish in record time.</p>
+                </div>
+                <div class="card-stats">
+                    <div class="high-score">Best Time: <span id="memory-high">--</span></div>
+                    <button class="play-btn">LAUNCH</button>
+                </div>
+            </div>
+
+            <!-- Game 4: Color Flood -->
+            <div class="card card-flood" onclick="app.openGame('flood')">
+                <div>
+                    <div class="card-icon">🎨</div>
+                    <h2 class="card-title">Color Flood</h2>
+                    <p class="card-desc">A color flood-fill puzzle game. Spread your color across the grid starting from top-left. Solve within the move allowance to win!</p>
+                </div>
+                <div class="card-stats">
+                    <div class="high-score">Min Moves: <span id="flood-high">--</span></div>
+                    <button class="play-btn">LAUNCH</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Test Number One. Powered by vanilla HTML5, CSS3, and browser Web Audio. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Game Modal Container -->
+    <div id="game-modal" class="game-modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="app.closeActiveGame()">×</button>
+            <div class="modal-header">
+                <h2 id="modal-title" class="modal-title">Game Title</h2>
+                <p id="modal-subtitle" class="modal-subtitle">Game subtitle or tagline</p>
+            </div>
+            
+            <div class="game-layout">
+                <!-- Play Area -->
+                <div class="game-viewport" id="game-viewport">
+                    <!-- Dynamic screen overlay for instructions -->
+                    <div id="game-overlay" class="game-overlay">
+                        <h3 id="overlay-title" class="overlay-title">Ready?</h3>
+                        <p id="overlay-instructions" class="overlay-instructions">Instructions go here.</p>
+                        <button id="overlay-btn" class="overlay-btn">START GAME</button>
+                    </div>
+                    <!-- Game elements (Canvas/Grid) are mounted here dynamically -->
+                </div>
+
+                <!-- Game Stats & Action Sidebar -->
+                <div class="game-sidebar">
+                    <div>
+                        <div class="panel">
+                            <div class="panel-title">Current Score</div>
+                            <div id="sidebar-score" class="panel-content">0</div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-title">Game High Score</div>
+                            <div id="sidebar-highscore" class="panel-content">0</div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-title">Controls</div>
+                            <div id="sidebar-controls" class="panel-controls-list">
+                                <!-- Dynamic Control Guides -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="restart-btn" class="action-btn">RESTART GAME</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="games/snake.js"></script>
+    <script src="games/defenders.js"></script>
+    <script src="games/memory.js"></script>
+    <script src="games/flood.js"></script>
+</body>
+</html>
